@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #111;
+            color: #eee;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .result-card {
+            background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
+            border: 1px solid #333;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .result-card:hover {
+            transform: translateY(-5px);
+        }
+        .mediaContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
+            background-color: #222;
+            justify-content: center;
+        }
+        .mediaContainer img,
+        .mediaContainer video {
+            width: 100%;
+            max-width: 48%;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .infoContainer {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .infoContainer p {
+            font-size: 16px;
+        }
+        .infoContainer a {
+            color: #4aa3ff;
+            text-decoration: none;
+        }
+        .infoContainer a:hover {
+            text-decoration: underline;
+        }
+        .timestamp {
+            font-weight: 600;
+            color: #f39c12;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 900px) {
+            .mediaContainer img,
+            .mediaContainer video {
+                max-width: 100%;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .infoContainer p {
+                font-size: 14px;
+            }
+            .timestamp {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    {% for result in results %}
+    <div class="result-card">
+        <div class="mediaContainer">
+            {% if result['image'] %}
+            <img src="{{ result['image'] }}" alt="Result Image">
+            {% endif %}
+            {% if result['video'] %}
+            <video src="{{ result['video'] }}" controls></video>
+            {% endif %}
+        </div>
+        <div class="infoContainer">
+            <p><strong>Anime Name:</strong> {{ result['filename'] }}</p>
+            <p><strong>Anilist:</strong> <a href="https://anilist.co/anime/{{result['anilist']}}" target="_blank">View on Anilist</a></p>
+            <p><strong>Episode:</strong> {{ result['episode'] }}</p>
+            <p><strong>Time Stamp:</strong> 
+                <span class="timestamp">
+                    {{ "%02d:%02d"|format(result['from'] // 60, result['from'] % 60) }}
+                    -
+                    {{ "%02d:%02d"|format(result['to'] // 60, result['to'] % 60) }}
+                </span>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

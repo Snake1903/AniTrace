@@ -1,0 +1,147 @@
+/* index.html CSS */
+:root {
+    /* --primary-color: #4CAF50; */
+    --primary-color: #8caf4c;
+    --secondary-color: #f44336;
+    --background-color: black;
+    --text-color: #ffffff;
+    --reduced: gray;
+}
+* {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body {
+    /* background-color: var(--background-color); */
+    background: #000000;
+    background: linear-gradient(269deg, rgba(0, 0, 0, 1) 18%, rgb(31, 30, 30) 48%, rgba(0, 0, 0, 1) 97%);
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    color: var(--text-color);
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 10px;
+}
+h1 span {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.tagline {
+    color: var(--reduced);
+    text-align: center;
+    font-size: 0.9em;
+    background-color: rgba(255, 255, 255, 0.089);
+    width: 40vmax;
+    padding: 10px;
+    /* border: 1px solid var(--reduced); */
+    border-radius: 5px;
+    margin-top: 10px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+
+    width: 50vw;
+    height: 50vh;
+    cursor: pointer;
+    /* background-color: rgba(36, 36, 36, 0.521);
+    border: 1px solid var(--reduced);
+    border-radius: 10px; */
+}
+button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+
+}
+button:hover {
+    background-color: var(--secondary-color);
+}
+.urlInput {
+    width: 80vmin;
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid var(--primary-color);
+    outline: none;
+    /* border-radius: 5px; */
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.089);
+    color: var(--text-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.imageLabel{
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 5em;
+    margin-top: 10px;
+    border: 2px dotted var(--primary-color);
+    background-color: #4caf4c1a;
+    width: 80vmin;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    transition: background-color 0.3s ease-in-out;
+}
+.imageLabel span{
+    font-size: 0.2em;
+    /* color: var(--text-color); */
+    margin-top: 10px;
+}
+.imageLabel:hover{
+    background-color: transparent;
+    /* color: var(--text-color); */
+}
+.imageInput{
+    display: none;
+    
+}
+::selection{
+    background-color: #8caf4c;
+    color: #000000;
+}
+
+.img {
+    width: auto; /* Maintain original width */
+    height: auto; /* Maintain original height */
+    max-width: 100%; /* Ensure it doesn't overflow the container */
+    max-height: 100vh; /* Ensure it doesn't exceed the viewport height */
+    border-radius: 5px;
+}
+        /* Responsive Design */
+        @media screen and (max-width: 600px) {
+            h1{
+                font-size: 2em;
+            }
+            .tagline{
+                font-size: 0.8em;
+            }
+
+        }
+
+/* result.html CSS */
